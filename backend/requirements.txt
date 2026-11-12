@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+python-multipart
+Pillow
+# Install matching torch and torchvision versions from the notebook's inference-requirements.txt.

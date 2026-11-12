@@ -1,0 +1,7 @@
+best.pt
+last.pt
+voc-data/
+__pycache__/
+.venv/
+*.zip
+.DS_Store
