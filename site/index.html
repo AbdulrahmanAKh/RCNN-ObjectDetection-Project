@@ -8,13 +8,13 @@
   <title>Inside the Detector — Faster R-CNN</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./studio.css">
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#top"><span class="brand-mark">◈</span> INSIDE THE DETECTOR</a>
+    <a class="brand" href="#top"><span class="brand-mark">◈</span> Inside the Detector</a>
     <nav aria-label="Main navigation">
       <a href="#how">How it works</a>
       <a class="source-button" href="https://github.com/AbdulrahmanAKh/RCNN-ObjectDetection-Project" target="_blank" rel="noopener"><img src="https://cdn.simpleicons.org/github/f1eee5" alt="">GitHub</a>
@@ -26,14 +26,14 @@
       <div class="section-head"><div><p class="eyebrow">FASTER R-CNN · OBJECT DETECTION</p><h2>What does the model see?</h2></div><p>Choose a sample or upload a photo. Run the detector, then explore its boxes and confidence scores.</p></div>
       <div class="workspace">
         <div class="scene-panel">
-          <div class="panel-heading"><span>IMAGE TRAY</span><span id="sceneCount">02 SCENES</span></div>
+          <div class="panel-heading"><span>Choose an image</span><span id="sceneCount">02 SCENES</span></div>
           <div class="scene-list" id="sceneList"></div>
           <label class="upload" for="fileInput"><span class="upload-plus">＋</span><span><strong>Upload a photo</strong><small>JPG, PNG, or WebP · up to 10 MB</small></span></label>
           <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" hidden>
           <p id="trayStatus" class="muted" role="status">Select a scene to begin.</p>
         </div>
         <div class="flow-panel">
-          <div class="panel-heading"><span>MODEL STUDIO</span><span id="flowStatus">READY</span></div>
+          <div class="panel-heading"><span>Detection pipeline</span><span id="flowStatus">READY</span></div>
           <div class="input-port" id="inputPort" tabindex="0" role="button" aria-label="Model input. Click to use the selected image, or drop an image here.">
             <div class="input-icon">↗</div><img id="inputImage" alt="" hidden>
             <strong id="inputLabel">Drop an image here</strong><small>or select a scene and press Run detection</small>
@@ -50,7 +50,7 @@
           <div class="flow-actions"><button id="runButton" class="run-button" disabled>Run detection <span>→</span></button><button id="resetButton" class="text-button" type="button">Reset</button></div>
         </div>
         <div class="result-panel">
-          <div class="panel-heading"><span>OUTPUT</span><span id="resultMode">WAITING</span></div>
+          <div class="panel-heading"><span>Result</span><span id="resultMode">WAITING</span></div>
           <div class="result-visual" id="resultVisual"><p id="emptyResult">Your result will appear here.</p><img id="resultImage" alt="" hidden><div id="boxes" class="boxes"></div></div>
           <label class="threshold">Confidence threshold <output id="thresholdValue">0.50</output><input id="threshold" type="range" min="0.05" max="0.95" value="0.50" step="0.05"></label>
           <div id="detectionList" class="detection-list" aria-live="polite"></div>
@@ -59,11 +59,11 @@
       </div>
     </section>
     <section id="how" class="story">
-      <div class="section-head"><div><p class="eyebrow">EXPLORE THE MODEL</p><h2>From pixels to meaning.</h2></div></div>
+      <div class="section-head"><div><p class="eyebrow">How it works</p><h2>From pixels to meaning.</h2></div></div>
       <div class="story-grid"><article><span>01</span><h3>See at several scales</h3><p>A ResNet-50 backbone and feature pyramid turn the image into maps that carry information about small and large objects.</p></article><article><span>02</span><h3>Look for objects</h3><p>The region proposal network suggests boxes worth examining. RoI pooling extracts a compact feature for each proposal.</p></article><article><span>03</span><h3>Make the call</h3><p>The trained prediction head assigns a VOC class, refines the box, and gives each detection a confidence score.</p></article></div>
     </section>
     <section class="training-story">
-      <div><p class="eyebrow">THE EXPERIMENT</p><h2>20 classes. One trained head.</h2>
+      <div><p class="eyebrow">Training the detector</p><h2>20 classes. One trained head.</h2>
       <p>We started with TorchVision's COCO-pretrained Faster R-CNN, using a ResNet-50 backbone and feature pyramid. We froze the detector and fine-tuned its final class and box predictor on PASCAL VOC 2007.</p></div>
       <dl><div><dt>Training</dt><dd>2,501 images · 10 epochs · SGD</dd></div><div><dt>Validation</dt><dd>2,510 images · epoch 10 selected</dd></div><div><dt>Test</dt><dd>4,952 images · 81.8% VOC 2007 mAP</dd></div><div><dt>Browser edition</dt><dd>ONNX · 640 × 640 letterboxed input</dd></div></dl>
       <p class="method-note">The reported test mAP comes from the original PyTorch evaluation. Browser preprocessing uses a fixed input size and can produce different results. The pipeline animation illustrates inference. The model's trained weights stay fixed while you test it.</p>
