@@ -8,17 +8,17 @@ The attached full run selected epoch 10 with 81.7% validation mAP and reported 8
 
 Serve the repository root, then open `/site/`. For example, `python -m http.server 8000` and visit `http://localhost:8000/site/`.
 
-The two bundled VOC scenes show **real saved detections** from the trained checkpoint. The confidence slider filters their saved results. Uploaded images require the inference service. The animated stages explain the model's architecture and do not display live internal activations.
+The two bundled VOC scenes show **real saved detections** from the trained checkpoint. Uploads run the exported model on your own device through ONNX Runtime Web in a worker. The first upload downloads roughly 166 MB of model weights. Later uploads reuse the loaded model until the page closes. Desktop browsers are recommended. The animated stages explain inference and do not display live internal activations.
 
-## Train and connect the detector
+## Train and export the detector
 
 1. Run `notebooks/FasterRCNN_VOC2007_Portfolio.ipynb` in Colab with a GPU and `MODE = "full"`.
-2. The exported `voc-detector-full.zip` contains `best.pt`, `inference-requirements.txt`, metadata, and example outputs. Keep the model file on the inference host. The site's example images and saved results already come from this ZIP.
-3. Install matching PyTorch and TorchVision versions for your host, plus `backend/requirements.txt`.
-4. Start the backend with `MODEL_PATH=/path/to/best.pt SITE_ORIGINS=https://YOURNAME.github.io uvicorn app:app --host 0.0.0.0 --port 8001` from the `backend/` directory.
-5. Put the backend's public HTTPS origin in `site/config.js`. GitHub Pages serves the frontend. The backend needs separate Python hosting because the browser cannot execute the PyTorch checkpoint.
+2. Download the exported `voc-detector-full.zip` and extract `best.pt`.
+3. Install compatible PyTorch and TorchVision packages, plus `onnx`, Pillow, and NumPy.
+4. Run `python scripts/export_browser.py /path/to/best.pt`. It exports a fixed 640 × 640 ONNX graph and splits its weights into three files below GitHub's regular file limit.
+5. Push the updated website and model files to publish.
 
-The inference response uses original image pixel coordinates and includes `box`, `label`, and `score` for each detection. The confidence slider filters the returned detections in the browser.
+The browser preserves aspect ratio with letterbox padding, then maps boxes back to original image coordinates. The fixed browser preprocessing differs from the original notebook evaluation, so browser predictions can differ. The exported graph passed numerical parity checks against PyTorch on the same fixed input. The original PyTorch inference module and optional FastAPI service remain in `backend/`.
 
 ## GitHub Pages
 
@@ -27,3 +27,14 @@ The static frontend is in `site/`. The workflow in `.github/workflows/pages.yml`
 ## Model
 
 The notebook starts from COCO pretrained Faster R-CNN with a ResNet-50 FPN backbone and trains the final predictor for the 20 PASCAL VOC classes. It saves the best checkpoint by validation mAP and evaluates once on the VOC 2007 test split. Use images you own or can redistribute for any permanent public sample gallery.
+
+## Author
+
+- GitHub: [@AbdulrahmanAKh](https://github.com/AbdulrahmanAKh)
+- LinkedIn: [Abdulrahman Alkhatib](https://www.linkedin.com/in/abdulrahman-alkhatib/)
+- Email: [aboodkhatib90@gmail.com](mailto:aboodkhatib90@gmail.com)
+- Portfolio: [abdulrahmanakh.github.io](https://abdulrahmanakh.github.io/)
+- Notebook URL: [YOLO SiteSight Project](https://AbdulrahmanAKh.github.io/YOLO_SiteSight_Project)
+
+**Developed & Engineered by Abdulrahman Alkhatib**  
+*Computer Science Graduate | Software & AI Engineer*

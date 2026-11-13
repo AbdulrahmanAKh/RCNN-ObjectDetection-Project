@@ -1,0 +1,90 @@
+{
+  "images": 4952,
+  "map50_voc07": 0.8175292989491728,
+  "classes_evaluated": 20,
+  "per_class": {
+    "aeroplane": {
+      "positives": 285,
+      "ap": 0.8927361807063054
+    },
+    "bicycle": {
+      "positives": 337,
+      "ap": 0.8496857748826361
+    },
+    "bird": {
+      "positives": 459,
+      "ap": 0.8284037718720936
+    },
+    "boat": {
+      "positives": 263,
+      "ap": 0.7221441869194435
+    },
+    "bottle": {
+      "positives": 469,
+      "ap": 0.7897203597842837
+    },
+    "bus": {
+      "positives": 213,
+      "ap": 0.8864966832763822
+    },
+    "car": {
+      "positives": 1201,
+      "ap": 0.8836252624799001
+    },
+    "cat": {
+      "positives": 358,
+      "ap": 0.8630835770024802
+    },
+    "chair": {
+      "positives": 756,
+      "ap": 0.6574284339101452
+    },
+    "cow": {
+      "positives": 244,
+      "ap": 0.8780878965089491
+    },
+    "diningtable": {
+      "positives": 206,
+      "ap": 0.7750827547028524
+    },
+    "dog": {
+      "positives": 489,
+      "ap": 0.823267816201835
+    },
+    "horse": {
+      "positives": 348,
+      "ap": 0.877201833736747
+    },
+    "motorbike": {
+      "positives": 325,
+      "ap": 0.86802758257882
+    },
+    "person": {
+      "positives": 4528,
+      "ap": 0.8761626881702036
+    },
+    "pottedplant": {
+      "positives": 480,
+      "ap": 0.6080213454575325
+    },
+    "sheep": {
+      "positives": 242,
+      "ap": 0.7990881806340467
+    },
+    "sofa": {
+      "positives": 239,
+      "ap": 0.7946925530092219
+    },
+    "train": {
+      "positives": 282,
+      "ap": 0.8485246136321751
+    },
+    "tvmonitor": {
+      "positives": 308,
+      "ap": 0.8291044835174024
+    }
+  },
+  "mode": "full",
+  "best_epoch": 10,
+  "protocol": "VOC2007 11-point AP, IoU > 0.5"
+}

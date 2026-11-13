@@ -1,0 +1,15 @@
+{
+  "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "hardware": "NVIDIA A100-SXM4-40GB",
+  "device": "cuda",
+  "cuda_runtime": "13.0",
+  "packages": {
+    "torch": "2.14.1+cu130",
+    "torchvision": "0.29.1+cu130",
+    "numpy": "2.4.6",
+    "Pillow": "11.3.0",
+    "tqdm": "4.67.3",
+    "ipython": "7.34.0"
+  }
+}

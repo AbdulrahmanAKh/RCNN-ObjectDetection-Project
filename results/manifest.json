@@ -1,0 +1,42 @@
+{
+  "format_version": 1,
+  "architecture": "fasterrcnn_resnet50_fpn",
+  "checkpoint": "best.pt",
+  "sha256": "bdb6de31203e4c2573ff94159d35f760f04459bc07c927aa5b71950eaa6090af",
+  "classes": [
+    "__background__",
+    "aeroplane",
+    "bicycle",
+    "bird",
+    "boat",
+    "bottle",
+    "bus",
+    "car",
+    "cat",
+    "chair",
+    "cow",
+    "diningtable",
+    "dog",
+    "horse",
+    "motorbike",
+    "person",
+    "pottedplant",
+    "sheep",
+    "sofa",
+    "train",
+    "tvmonitor"
+  ],
+  "mode": "full",
+  "best_epoch": 10,
+  "validation_map50_voc07": 0.8165282756155442,
+  "test_map50_voc07": 0.8175292989491728,
+  "output_coordinates": "xyxy in oriented original image pixels",
+  "stage_parameters": {
+    "backbone": 23454912,
+    "feature_pyramid": 3344384,
+    "region_proposals": 593935,
+    "roi_pool": 0,
+    "box_head": 13895680,
+    "predictor": 107625
+  }
+}

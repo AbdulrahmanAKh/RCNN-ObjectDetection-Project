@@ -10,28 +10,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./studio.css">
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="#top"><span class="brand-mark">◈</span> INSIDE THE DETECTOR</a>
-    <nav aria-label="Main navigation"><a href="#workbench">Workbench</a><a href="#how">How it works</a><a href="https://github.com/AbdulrahmanAKh/RCNN-ObjectDetection-Project/blob/main/notebooks/FasterRCNN_VOC2007_Portfolio.ipynb">Notebook ↗</a></nav>
+    <nav aria-label="Main navigation">
+      <a href="#how">How it works</a>
+      <a class="source-button" href="https://github.com/AbdulrahmanAKh/RCNN-ObjectDetection-Project" target="_blank" rel="noopener"><img src="https://cdn.simpleicons.org/github/f1eee5" alt="">GitHub</a>
+      <a class="source-button" href="https://colab.research.google.com/github/AbdulrahmanAKh/RCNN-ObjectDetection-Project/blob/main/notebooks/FasterRCNN_VOC2007_Portfolio.ipynb" target="_blank" rel="noopener"><img src="https://colab.research.google.com/img/colab_favicon_256px.png" alt="">Open in Colab</a>
+    </nav>
   </header>
   <main id="top">
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="pulse-dot"></span> COMPUTER VISION / INTERACTIVE EXPLAINER</p>
-        <h1>Watch an image<br><em>become a detection.</em></h1>
-        <p class="intro">Drop a photo into the model. Follow its features, proposed regions, and learned weights as they turn pixels into boxes and labels.</p>
-        <a class="primary-link" href="#workbench">Enter the workbench <span>↘</span></a>
-      </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="art-ring r1"></div><div class="art-ring r2"></div><div class="art-ring r3"></div>
-        <div class="art-grid"></div><div class="art-box b1"></div><div class="art-box b2"></div>
-        <span class="art-label">REGION_01 · 0.94</span><span class="art-cross">+</span>
-      </div>
-    </section>
     <section id="workbench" class="workbench">
-      <div class="section-head"><div><p class="eyebrow">01 / THE WORKBENCH</p><h2>Put an image in motion.</h2></div><p>Choose a scene or upload your own, then drag it into the input port.</p></div>
+      <div class="section-head"><div><p class="eyebrow">FASTER R-CNN · OBJECT DETECTION</p><h2>What does the model see?</h2></div><p>Choose a sample or upload a photo. Run the detector, then explore its boxes and confidence scores.</p></div>
       <div class="workspace">
         <div class="scene-panel">
           <div class="panel-heading"><span>IMAGE TRAY</span><span id="sceneCount">02 SCENES</span></div>
@@ -62,16 +54,25 @@
           <div class="result-visual" id="resultVisual"><p id="emptyResult">Your result will appear here.</p><img id="resultImage" alt="" hidden><div id="boxes" class="boxes"></div></div>
           <label class="threshold">Confidence threshold <output id="thresholdValue">0.50</output><input id="threshold" type="range" min="0.05" max="0.95" value="0.50" step="0.05"></label>
           <div id="detectionList" class="detection-list" aria-live="polite"></div>
-          <p id="resultNote" class="result-note">The animation explains the model stages. Detection results appear when the inference service is connected.</p>
+          <p id="resultNote" class="result-note">Uploads run locally in your browser. First run downloads the 166 MB model. Desktop recommended.</p>
         </div>
       </div>
     </section>
     <section id="how" class="story">
-      <div class="section-head"><div><p class="eyebrow">02 / UNDER THE HOOD</p><h2>From pixels to meaning.</h2></div></div>
+      <div class="section-head"><div><p class="eyebrow">EXPLORE THE MODEL</p><h2>From pixels to meaning.</h2></div></div>
       <div class="story-grid"><article><span>01</span><h3>See at several scales</h3><p>A ResNet-50 backbone and feature pyramid turn the image into maps that carry information about small and large objects.</p></article><article><span>02</span><h3>Look for objects</h3><p>The region proposal network suggests boxes worth examining. RoI pooling extracts a compact feature for each proposal.</p></article><article><span>03</span><h3>Make the call</h3><p>The trained prediction head assigns a VOC class, refines the box, and gives each detection a confidence score.</p></article></div>
     </section>
+    <section class="training-story">
+      <div><p class="eyebrow">THE EXPERIMENT</p><h2>20 classes. One trained head.</h2>
+      <p>We started with TorchVision's COCO-pretrained Faster R-CNN, using a ResNet-50 backbone and feature pyramid. We froze the detector and fine-tuned its final class and box predictor on PASCAL VOC 2007.</p></div>
+      <dl><div><dt>Training</dt><dd>2,501 images · 10 epochs · SGD</dd></div><div><dt>Validation</dt><dd>2,510 images · epoch 10 selected</dd></div><div><dt>Test</dt><dd>4,952 images · 81.8% VOC 2007 mAP</dd></div><div><dt>Browser edition</dt><dd>ONNX · 640 × 640 letterboxed input</dd></div></dl>
+      <p class="method-note">The reported test mAP comes from the original PyTorch evaluation. Browser preprocessing uses a fixed input size and can produce different results. The pipeline animation illustrates inference. The model's trained weights stay fixed while you test it.</p>
+    </section>
   </main>
-  <footer><span>FASTER R-CNN × PASCAL VOC 2007</span><span>20 object classes · ResNet-50 FPN</span></footer>
+  <footer class="author">
+    <div><strong>Developed &amp; Engineered by Abdulrahman Alkhatib</strong><p>Computer Science Graduate | Software &amp; AI Engineer</p></div>
+    <nav aria-label="Author links"><a href="https://github.com/AbdulrahmanAKh">GitHub</a><a href="https://www.linkedin.com/in/abdulrahman-alkhatib/">LinkedIn</a><a href="mailto:aboodkhatib90@gmail.com">Email</a><a href="https://abdulrahmanakh.github.io/">Portfolio</a><a href="https://AbdulrahmanAKh.github.io/YOLO_SiteSight_Project">Notebook URL</a></nav>
+  </footer>
   <script src="./config.js"></script>
   <script src="./app.js" defer></script>
 </body>
